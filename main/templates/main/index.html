@@ -1,0 +1,227 @@
+{% extends 'main/base.html' %}
+{% load static %}	
+
+<!-- ========== SEO ========== -->
+{% block title%}Christos Petalotis{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block extend_header %}{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	
+	<!-- MAIN PART -->
+	<div class="main">
+		<div class="landing_page">
+			
+			<div class="main__section">
+				
+				<!-- no-gutters here prevents creating horizontal overflow on the whole page -->
+				<div class="row no-gutters">
+
+					<div class="col-12">
+						<div class="main__section__box">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="main__section__box--prof-pic">
+										<img src="{{ me.userprofile.avatar.url }}" alt="profile picture">
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-md-6">
+									<div class="main__section__box--description">
+										<div id="greeting">Hey there!</div>	 
+											I'm {{ me.first_name|title }}. I'm a {{ me.userprofile.title }} Master's CS student living in the Netherlands. 
+											<p>
+												{{ me.userprofile.bio }}
+											In this page you can learn about me and the things that movitate and excite me. You will also find a quick summary of my 
+											competencies and what tools and technologies I use for my daily work tasks.
+											</p>
+											Go ahead.. Scroll down
+									</div>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="arrowDown fadeIn">
+							<svg aria-hidden="true" data-prefix="far" 		data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-angle-down 	fa-w-10 fa-3x">
+								<path fill="currentColor" 
+									d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z" 	class="arrowDown">
+								</path>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+	
+			<!-- ABOUT ME -->
+	<section class="about-me">
+		<div class="about-me__section">
+		<h3>Get to know me...</h3>
+
+			<div class="row">
+				<div class="col-12">
+
+					<div class="about-me__section__description">
+							<div class="about-me__section__description--text">
+								
+								<p>
+									I live in Amsterdam, Netherlands, and pursue my Master's degree on Computer Science, with a specialization on Software Engineering and Green IT. This is a joint program provided by the <a href="https://www.uva.nl/en">University of Amsterdam</a> (UvA) and the <a href="https://vu.nl/en">Vrije University Amsterdam</a> (VU).
+								</p>
+								<p>
+									At the same time, I work as a <span class="stand-out">cloud engineer</span>, using technologies such as AWS, Nodejs and Python, to build cloud-based web applications.
+								</p>
+								<p>
+									Before that, I taught myself how to code, explored many topics and built various projects (web applications, mobile applications, scripts).
+								</p>
+								<p> I love creating stuff, solving complicated problems, and fixing every single bug I come across.</p>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="tech">
+		<!-- Move it outside the about me section so that it can have its own width -->
+		<h3 style="text-align: center; margin-top: 1.5em; letter-spacing: 0.2em;">Skills & Tools</h3>
+		<div class="tech__components">
+			<div class="tech__components--component">
+				<div class="tech__components--component--icon">
+					<i class="material-icons">web</i>
+				</div>
+				<h4>Front-end development</h4>
+				<div class="tech__components--component--text">
+					Development of modern, fast and responsive web applications using <span class="stand-out">HTML</span>, <span class="stand-out">CSS</span>, <span class="stand-out">Bootstrap</span>, <span class="stand-out">JavaScript</span> and <span class="stand-out">JQuery</span>
+				</div>
+			</div>
+
+			<div style="padding-top: 1.3em" class="tech__components--component">
+				<div style="margin-bottom: 1em;" class="tech__components--component--icon">
+					<i style="font-size: 3.5em;" class="fa fa-server"></i>
+				</div>
+				<h4>Custom server logic</h4>
+				<div class="tech__components--component--text">
+					Development of fast, secure and robust REST APIs. Tools of choice: <span class="stand-out">Node.js</span>, <span class="stand-out">Python</span>, <span class="stand-out">SQL</span>, <span class="stand-out">Serverless framework</span>
+				</div>
+			</div>
+
+			<div class="tech__components--component">
+				<div class="tech__components--component--icon">
+					<i class="material-icons">cloud</i>
+				</div>
+				<h4>Build on the cloud</h4>
+				<div class="tech__components--component--text">
+					Utilization of <span class="stand-out">AWS</span> and <span class="stand-out">GCP</span> services to implement cloud infrastructures and build highly-scalable, cost-effective applications
+				</div>
+			</div>
+		
+		</div>
+	</section>
+
+	<section class="certifications" id="certifications">
+		<h2 style="text-align:center;">Checkout my cerifications</h2>
+
+		<div class="certifications__section">
+			<div class="row">
+				<!-- <div class="col-12"> -->
+					<div class="col-12 col-sm-6 certifications__section--left">
+						<h3>Cloud Certifications</h3>
+						<a href="https://www.credential.net/3a2a50f7-f2cb-418f-b693-412576489bc4" target="_blank">
+							<div class="certifications__section--left--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/20960755" alt="">
+									</div>
+									<div class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">GCP</span>: Associate Cloud Engineer
+									</div>
+								</div>
+							</div>
+						</a>
+
+						<a href="https://www.credly.com/badges/d17f2943-5618-4506-9f46-c2e3f5c97c85/public_url" target="_blank">
+							<div class="certifications__section--left--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="https://images.credly.com/size/340x340/images/68468004-5a85-4f3b-bc58-590773979486/AWS-CloudPractitioner-2020.png' %}" alt="">
+									</div>
+									<div class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">AWS</span>: Cloud Practitioner
+									</div>
+								</div>
+							</div>
+						</a>
+
+						<a href="https://www.credly.com/badges/4249054b-f14c-4fe2-9c4e-0edae1c9676b/public_url" target="_blank">
+
+							<div class="certifications__section--left--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="https://images.credly.com/size/340x340/images/4bc21d8b-4afe-4fbd-9a90-a9de8bf7b240/AWS-SolArchitect-Associate-2020.png' %}" alt="">
+									</div>
+									<span class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">AWS</span>: Solutions Architect - Associate
+									</span>
+								</div>
+							</div>
+						</a>
+
+					</div>
+					
+					<div class="col-12 col-sm-6 certifications__section--right">
+						<h3>Other Certifications</h3>
+						<a href="https://www.freecodecamp.org/certification/chrispetalotis/scientific-computing-with-python-v7" target="_blank">
+
+							<div class="certifications__section--right--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="{% static './images/scientific-computing-with-python.png' %}" alt="">
+									</div>
+									<div class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">freeCodeCamp</span>: Scientific Computing with Python
+									</div>
+								</div>
+							</div>
+						</a> 
+						
+						<a href="https://www.freecodecamp.org/certification/chrispetalotis/javascript-algorithms-and-data-structures" target="_blank">
+							<div class="certifications__section--right--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="{% static './images/js-algorithms-and-data-structures.png' %}" alt="">
+									</div>
+									<div class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">freeCodeCamp</span>: JavaScript Algorithms and Data Structures
+									</div>
+								</div>
+							</div>
+						</a>
+						
+						<a href="https://www.freecodecamp.org/certification/chrispetalotis/responsive-web-design" target="_blank">
+							<div class="certifications__section--right--item">
+								<div class="row">
+									<div class="col-12 col-lg-3 badge">
+										<img src="{% static './images/responsive-web-design-certificate-fcc.png' %}" alt="">
+									</div>
+									<div class="col-12 col-lg-8 offset-lg-1 cert_description">
+										<span class="provider">freeCodeCamp</span>: Responsive Web Desgin
+									</div>
+								</div>								
+							</div>
+						</a>
+					</div>
+					
+				<!-- </div> -->
+			</div>
+		</div>
+	</section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{% block title %}{% endblock %}</title>
+    <meta name="author" content="Christos Petalotis">
+    <link rel="canonical" href="{{ request.path }}">
+    <link rel="home" href="{% url 'main:home' %}">
+    <!-- Personal website of Christos Petalotis -->
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
+	<link rel="shortcut icon" type="image" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon" href="image/png" href="{% static 'images/favicon.png' %}">
+
+	<!-- STYLES -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="preconnect prefetch">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extend_header %}{% endblock %}
+
+	<!-- Jqeury -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Google Analytics - Google Tag Manager-->
+	<script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KRBXRTH');</script>
+	<!-- End Google Tag Manager -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124825060-1"></script>
+	<script async>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-124825060-1');
+	</script>
+	<!-- Google verification tag -->
+	<meta name="google-site-verification" content="ce4kvtXXnZezIgSGgDJ9dQQtUFSFIPBI6aXUP_9r9DM" />
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+	 <noscript>
+         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRBXRTH"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    {% include 'main/partials/nav.html' %}
+    
+    {% block content %}{% endblock %}
+
+    {% include 'main/partials/footer.html' %}
+
+    <!-- Arrow navigating to the top of the page -->
+	<button data-scroll-class='100vh:active' id="arrow-to-top" name='go to top'><i class="fas fa-angle-up"></i></button>
+
+    <!-- Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+	<!-- Custom JS -->
+	<script src="{% static 'js/script.js' %}" rel='preconnect'></script>
+    {% block extend_footer %}{% endblock %}
+</body>
+</html>
