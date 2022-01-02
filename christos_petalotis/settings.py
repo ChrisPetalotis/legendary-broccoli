@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
+
 import os
+import sys
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,14 +25,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-eo0k737!x=!bp5p1k1x8@#h)lhvmq%05d6e=ah^m!1t)h2j8fi' # TODO: Put in an .env file or smthing similar
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
+# 'django-insecure-eo0k737!x=!bp5p1k1x8@#h)lhvmq%05d6e=ah^m!1t)h2j8fi' # TODO: Put in an .env file or smthing similar
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Since envrionment variables are read as strings, make a comparison to ensure the variable is evaluated correctly
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-# Links that are allowed to host the applicatio
-ALLOWED_HOSTS = []
+# Helper variable used to determine whether to connect to a Postgres or a local SQLite database for testing
+DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'False') == 'True'
 
+# Links that are allowed to host the application
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 # Application definition
 
@@ -73,18 +81,44 @@ TEMPLATES = [
     },
 ]
 
+# CKEditor settings
+CKEDITOR_CONFIGS = {
+   'default': {
+       'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+            ['Maximize'],
+        ],
+        'extraPlugins': 'justify,liststyle,indent',
+   },
+}
+
 WSGI_APPLICATION = 'christos_petalotis.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3', #TODO: Use a PostgreSQL database instead
+
+if DEVELOPMENT_MODE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3', #TODO: Use a PostgreSQL database instead
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception('DATABASE_URL environment variable not defined')
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 
 # Password validation

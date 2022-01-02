@@ -1,0 +1,190 @@
+@import 'utilities/variables';
+
+/* MAIN */
+.hero {
+    &--main {    
+            
+        .hero__text {
+
+            &__prof-pic {
+                text-align: center;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    max-width: 23em;
+                    border-radius: 15px;
+                }
+                
+            }
+
+            &__description {
+                font-size: 1.2rem;
+                margin: 0 auto;
+                letter-spacing: 0.1em;
+
+                @media (max-width: $screen-md) {
+                    margin: 3em auto 1.5em;
+                }
+                
+                #greeting {
+                    font-size: 2em;
+                    margin-bottom: 0.5em;
+                    text-align: center;
+                }
+
+            }
+        }
+            
+        .arrowDown {
+            margin-bottom: 1.5em;
+            text-align: center;
+
+            &>svg {
+                color: white;
+                height: 50px;
+                bottom: 10px;
+                animation: down 2s ease infinite;
+            }
+        }
+    
+        @keyframes down {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    
+    }
+}
+
+            /* ABOUT ME */
+.about-me {
+    font-size: 1.2rem;
+
+    &__section {
+        width: 90%;
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 0 1em;
+
+        &__description {
+            margin-top: 1.5em;
+
+            &--text {
+                line-height: 2em;
+            }
+
+        }
+    }	
+}
+
+.tech {
+    &__components {
+        font-size: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4em;
+        justify-content: space-around;
+
+        width: 85%;
+        max-width: 1400px;
+        margin: 3.5em auto 0;
+
+        line-height: 1.6em;
+
+        // @media (max-width: $screen-lg) {
+        // 	flex-direction: column;
+        // 	align-items: center;
+        // 	// justify-content: space-between;
+        // }
+
+        &--component {
+            // margin-bottom: 2em;
+            padding: 1em 1.1em;
+            text-align: center;
+            box-shadow: 10px 10px 25px 0px #aaa;
+            border-radius: 20px;
+            max-width: 18em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &--icon {
+                margin-bottom: 0.5em;
+                i {
+                    font-size: 4em;
+                }
+            }
+
+            &--text {
+                margin-top: 1em;
+            }
+
+            h4 {
+                font-size: 1.4rem;
+                font-weight: 800;
+            }
+        }
+    }
+    
+}
+
+.certifications {
+    &__section {
+        text-align: center;
+        margin: 5em auto;
+        width: 85%;
+        max-width: 1200px;
+
+        &--left--item, &--right--item {
+            padding: 1rem 2em;
+            margin: 2em 0;
+            box-shadow: 10px 10px 25px 0px #aaa;
+            border-radius: 15px;
+            transition: all 0.3s;
+
+            @media (max-width: $screen-lg) {
+                padding: 2rem 1em;
+            }
+            
+            // Fixes the diffenece in height between cloud and other ceritfication items
+            @media (min-width:$screen-sm) and (max-width: $screen-lg) {
+                min-height: 28.6%;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            img {
+                max-width: 11em;
+                min-height: 11em;
+
+                @media (max-width: $screen-lg) {
+                    margin-bottom: 2em;
+                }
+            }
+
+            // Center text and image horizontally
+            .row {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        span.provider {
+            font-weight: 600;
+        }
+        #grayed-out {
+            color: #aaa;
+        }
+    }
+}

@@ -3,9 +3,10 @@ $(document).ready(function () {
 	// Assign event listeners
 	$(window).scroll(() => showArrowToTop());
 	$('#arrow-to-top').click((event) => scrollToTop(event));
+	// Smooth scroll to selected section of same page
 	$('.nav-item>a').click(function(event) {
 		const targetSection = $(this).attr("href");
-		if (!targetSection.includes('html')) {
+		if (targetSection.includes('#')) {
 			event.preventDefault();
 			const marginTop = parseInt($(targetSection).css('margin-top'), 10)
 			$('html, body').animate({ scrollTop: $(targetSection).offset().top - marginTop}, 750);

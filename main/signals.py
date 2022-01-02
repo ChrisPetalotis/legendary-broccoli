@@ -1,6 +1,6 @@
 # A signal is a receiver - When an object (in this case User object) is created a signal will be fired
-# to this signals.py. The receiver picks up that signal and then the respective function is called (in thi
-# case create_profiles)
+# to this signals.py. The receiver picks up that signal and then the respective function is called (in 
+# this case create_profiles)
 
 # We need to wire this signals.py file in to the apps.py by overriding the ready method
 

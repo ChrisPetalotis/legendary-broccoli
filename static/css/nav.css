@@ -1,0 +1,74 @@
+header {
+  text-align: center;
+  background: #0B0C0D;
+}
+
+header a {
+  color: #ececec;
+  text-decoration: none;
+}
+
+header .navbar-brand {
+  font-family: 'Comic sans',cursive;
+  margin: auto;
+  margin-left: 5em;
+  letter-spacing: 2px;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  header .navbar-brand {
+    margin-left: 0.5em;
+  }
+}
+
+header .navbar {
+  padding-top: 2.4em;
+}
+
+header .navbar .navbar-toggler {
+  border-color: #ececec;
+  float: right !important;
+}
+
+header .navbar .navbar-toggler:focus {
+  outline: none;
+}
+
+header .navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(236, 236, 236, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+header .navbar .navbar-collapse {
+  margin-right: 5em;
+}
+
+header .navbar .nav-item a {
+  margin-right: 5em;
+  border: 0;
+}
+
+header .navbar .nav-item a:after {
+  display: block;
+  content: '';
+  border-bottom: 1px solid #ececec;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  width: calc(100% + 1em);
+  padding-bottom: .3em;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+}
+
+header .navbar .nav-item a:hover:after {
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+/*# sourceMappingURL=nav.css.map */
