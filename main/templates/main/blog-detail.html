@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title%}{{ object.name }}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block extend_header %}
+    <link rel="stylesheet" href="{% static 'css/blog-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <article class="post-container">
+        <div class="post-container__header">
+            <h1 class="post-container__header__title">{{ object.name }}</h1>
+            <div class="post-container__header__subtitle"></div>
+            <div class="post-container__header__date">{{ object.date }}</div>
+            <div class="post-container__header__image">
+                <img src="{{ object.image.url }}" alt="{{ object.image.name }}">
+            </div>
+        </div>
+
+        <div class="post-container__body">
+            {{object.body|safe}}
+        </div>
+    </article>
+{% endblock %}

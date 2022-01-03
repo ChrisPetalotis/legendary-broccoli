@@ -33,10 +33,10 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # Helper variable used to determine whether to connect to a Postgres or a local SQLite database for testing
-DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'False') == 'True'
+DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'True') == 'True'
 
 # Links that are allowed to host the application
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,personal-website-dev2.eu-central-1.elasticbeanstalk.com").split(",")
 
 # Application definition
 
@@ -106,19 +106,19 @@ WSGI_APPLICATION = 'christos_petalotis.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-if DEVELOPMENT_MODE:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3', #TODO: Use a PostgreSQL database instead
-        }
+# if DEVELOPMENT_MODE:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', #TODO: Use a PostgreSQL database instead
     }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception('DATABASE_URL environment variable not defined')
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+}
+# elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+#     if os.getenv("DATABASE_URL", None) is None:
+#         raise Exception('DATABASE_URL environment variable not defined')
+#     DATABASES = {
+#         "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     }
 
 
 # Password validation

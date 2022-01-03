@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}	
+
+<!-- ========== SEO ========== -->
+{% block title%}Christos Petalotis - Blog{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block extend_header %}
+	<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero hero--blog">
+    <div class="row no-gutters">
+        <div class="col-12">
+
+            <div class="hero__text">
+                <div class="hero__text__title">
+                    <h1>Blog</h1>
+                </div>
+
+                <div class="hero__text__description">
+                    My interests include technology, programming, productivity, minimalism, and more - expect to read much of that here.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    
+</section>
+
+<section class="posts-container fadeIn">
+    
+    <div class="row no-gutters">
+        {% for obj in object_list %}
+            <div class="col-12 offset-sm-2 col-sm-4">
+                <article>
+                    <div class="posts-container__post">
+                        <a href="{% url 'main:blog' slug=obj.slug %}">
+                            <div class="image-div">
+                                <img src="{{ obj.image.url }}" loading="lazy" alt="">
+                            </div>  
+                        </a>
+                        <a href="{% url 'main:blog' slug=obj.slug %}">
+                            <div class="posts-container__post--title">{{ obj.name | title }} ->
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            {% empty %}
+            <h3>Nothing to see here yet</h3>
+            <h4 style="margin-top: 1em;">Come back later - you may be more lucky next time</h4>
+        
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
