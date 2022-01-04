@@ -36,8 +36,8 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'True') == 'True'
 
 # Links that are allowed to host the application
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,personal-website-dev2.eu-central-1.elasticbeanstalk.com").split(",")
-
+# ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,django-env.eu-central-1.elasticbeanstalk.com").split(",")
+ALLOWED_HOSTS = ['django-env.eu-central-1.elasticbeanstalk.com'] 
 # Application definition
 
 INSTALLED_APPS = [
@@ -145,7 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Amsterdam'
 
 USE_I18N = True
 
